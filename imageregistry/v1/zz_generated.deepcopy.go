@@ -472,11 +472,6 @@ func (in *ImageRegistrySpec) DeepCopyInto(out *ImageRegistrySpec) {
 		*out = make([]ImageRegistryConfigRoute, len(*in))
 		copy(*out, *in)
 	}
-	if in.Logging != nil {
-		in, out := &in.Logging, &out.Logging
-		*out = new(int64)
-		**out = **in
-	}
 	if in.Resources != nil {
 		in, out := &in.Resources, &out.Resources
 		*out = new(corev1.ResourceRequirements)
