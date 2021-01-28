@@ -554,6 +554,9 @@ message TagEvent {
 
   // Generation is the spec tag generation that resulted in this tag being updated
   optional int64 generation = 4;
+
+  // Images hols references for multiple images (in case the tag points to a manifest list)
+  repeated string images = 5;
 }
 
 // TagEventCondition contains condition information for a tag event.

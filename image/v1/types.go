@@ -319,6 +319,8 @@ type TagEvent struct {
 	Image string `json:"image" protobuf:"bytes,3,opt,name=image"`
 	// Generation is the spec tag generation that resulted in this tag being updated
 	Generation int64 `json:"generation" protobuf:"varint,4,opt,name=generation"`
+	// Images hols references for multiple images (in case the tag points to a manifest list)
+	Images []string `json:"images" protobuf:"bytes,5,opt,name=images"`
 }
 
 type TagEventConditionType string

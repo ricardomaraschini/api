@@ -356,6 +356,7 @@ var map_TagEvent = map[string]string{
 	"dockerImageReference": "DockerImageReference is the string that can be used to pull this image",
 	"image":                "Image is the image",
 	"generation":           "Generation is the spec tag generation that resulted in this tag being updated",
+	"images":               "Images hols references for multiple images (in case the tag points to a manifest list)",
 }
 
 func (TagEvent) SwaggerDoc() map[string]string {
