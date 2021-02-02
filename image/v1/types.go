@@ -61,10 +61,10 @@ type Image struct {
 
 // ImageManifest represents a manifest within a ManifestList
 type ImageManifest struct {
-	Digest    string           `json:"digest,omitempty" protobuf:"bytes,1,opt,name=digest"`
-	MediaType string           `json:"mediaType,omitempty" protobuf:"bytes,2,opt,name=mediaType"`
-	Platform  ManifestPlatform `json:"platform" protobuf:"bytes,3,opt,name=platform"`
-	Size      int64            `json:"size" protobuf:"bytes,4,opt,name=size"`
+	Digest       string           `json:"digest,omitempty" protobuf:"bytes,1,opt,name=digest"`
+	MediaType    string           `json:"mediaType,omitempty" protobuf:"bytes,2,opt,name=mediaType"`
+	Platform     ManifestPlatform `json:"platform" protobuf:"bytes,3,opt,name=platform"`
+	ManifestSize int64            `json:"size" protobuf:"bytes,4,opt,name=size"`
 }
 
 // ManifestPlatform holds information about a manifest platform.
