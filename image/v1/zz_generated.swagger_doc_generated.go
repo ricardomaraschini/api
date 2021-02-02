@@ -35,6 +35,7 @@ var map_Image = map[string]string{
 	"dockerImageSignatures":        "DockerImageSignatures provides the signatures as opaque blobs. This is a part of manifest schema v1.",
 	"dockerImageManifestMediaType": "DockerImageManifestMediaType specifies the mediaType of manifest. This is a part of manifest schema v2.",
 	"dockerImageConfig":            "DockerImageConfig is a JSON blob that the runtime uses to set up the container. This is a part of manifest schema v2.",
+	"dockerImageManifests":         "DockerImageManifests holds references to other manifests pointed by this image.",
 }
 
 func (Image) SwaggerDoc() map[string]string {
@@ -113,6 +114,14 @@ var map_ImageLookupPolicy = map[string]string{
 
 func (ImageLookupPolicy) SwaggerDoc() map[string]string {
 	return map_ImageLookupPolicy
+}
+
+var map_ImageManifest = map[string]string{
+	"": "ImageManifest represents a manifest within a ManifestList",
+}
+
+func (ImageManifest) SwaggerDoc() map[string]string {
+	return map_ImageManifest
 }
 
 var map_ImageSignature = map[string]string{
@@ -273,6 +282,14 @@ var map_ImageTagList = map[string]string{
 
 func (ImageTagList) SwaggerDoc() map[string]string {
 	return map_ImageTagList
+}
+
+var map_ManifestPlatform = map[string]string{
+	"": "ManifestPlatform holds information about a manifest platform.",
+}
+
+func (ManifestPlatform) SwaggerDoc() map[string]string {
+	return map_ManifestPlatform
 }
 
 var map_NamedTagEventList = map[string]string{

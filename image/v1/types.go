@@ -55,6 +55,23 @@ type Image struct {
 	DockerImageManifestMediaType string `json:"dockerImageManifestMediaType,omitempty" protobuf:"bytes,9,opt,name=dockerImageManifestMediaType"`
 	// DockerImageConfig is a JSON blob that the runtime uses to set up the container. This is a part of manifest schema v2.
 	DockerImageConfig string `json:"dockerImageConfig,omitempty" protobuf:"bytes,10,opt,name=dockerImageConfig"`
+	// DockerImageManifests holds references to other manifests pointed by this image.
+	DockerImageManifests []ImageManifest `json:"dockerImageManifests,omitempty" protobuf:"bytes,11,opt,name=dockerImageManifests"`
+}
+
+// ImageManifest represents a manifest within a ManifestList
+type ImageManifest struct {
+	Digest    string           `json:"digest,omitempty" protobuf:"bytes,1,opt,name=digest"`
+	MediaType string           `json:"mediaType,omitempty" protobuf:"bytes,2,opt,name=mediaType"`
+	Platform  ManifestPlatform `json:"platform" protobuf:"bytes,3,opt,name=platform"`
+	Size      int64            `json:"size" protobuf:"bytes,4,opt,name=size"`
+}
+
+// ManifestPlatform holds information about a manifest platform.
+type ManifestPlatform struct {
+	Architecture string `json:"architecture,omitempty" protobuf:"bytes,1,opt,name=architecture"`
+	OS           string `json:"os,omitempty" protobuf:"bytes,2,opt,name=os"`
+	Variant      string `json:"variant,omitempty" protobuf:"bytes,3,opt,name=variant"`
 }
 
 // ImageLayer represents a single layer of the image. Some images may have multiple layers. Some may have none.

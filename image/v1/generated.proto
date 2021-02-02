@@ -72,6 +72,9 @@ message Image {
 
   // DockerImageConfig is a JSON blob that the runtime uses to set up the container. This is a part of manifest schema v2.
   optional string dockerImageConfig = 10;
+
+  // DockerImageManifests holds references to other manifests pointed by this image.
+  repeated ImageManifest dockerImageManifests = 11;
 }
 
 // ImageBlobReferences describes the blob references within an image.
@@ -164,6 +167,17 @@ message ImageLookupPolicy {
   // be fully qualified to an image ID if found. The tag's referencePolicy is taken
   // into account on the replaced value. Only works within the current namespace.
   optional bool local = 3;
+}
+
+// ImageManifest represents a manifest within a ManifestList
+message ImageManifest {
+  optional string digest = 1;
+
+  optional string mediaType = 2;
+
+  optional ManifestPlatform platform = 3;
+
+  optional int64 size = 4;
 }
 
 // ImageSignature holds a signature of an image. It allows to verify image identity and possibly other claims
@@ -441,6 +455,15 @@ message ImageTagList {
 
   // Items is the list of image stream tags
   repeated ImageTag items = 2;
+}
+
+// ManifestPlatform holds information about a manifest platform.
+message ManifestPlatform {
+  optional string architecture = 1;
+
+  optional string os = 2;
+
+  optional string variant = 3;
 }
 
 // NamedTagEventList relates a tag to its image history.
